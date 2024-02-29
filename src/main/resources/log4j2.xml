@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="path">${sys:logging.directory}</Property>
+        <Property name="levelConsole">${sys:custom.logging.level.console}</Property>
+        <Property name="logPattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [level:%5p] [thread:%t] [MDC:%X] [host:${hostName}]
+            [class:%c{1}] [method:%M] - %m%n%ex
+        </Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="${logPattern}"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+
+        <Root level="${levelConsole}">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
